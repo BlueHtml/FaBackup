@@ -23,7 +23,7 @@ jobs:
         token: ${{ secrets.TOKEN }}
     - name: Run
       run: |
-        curl -fL -o dir --header "PRIVATE-TOKEN: secrets.PRIVATE_TOKEN" "secrets.URL"
+        curl -fL -o dir --header "PRIVATE-TOKEN: ${{ secrets.PRIVATE_TOKEN }}" "${{ secrets.URL }}"
         dotnet run --project cs
     - name: Push
       run: |
