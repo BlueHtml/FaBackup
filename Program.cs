@@ -7,7 +7,7 @@ await foreach (string line in File.ReadLinesAsync(DIR))
         continue;
     }
 
-    string path = Path.Combine(TARGET_PATH, line[3..]);
+    string path = Path.Combine(TARGET_PATH, line[3..].Replace('\\', Path.DirectorySeparatorChar));
     Directory.CreateDirectory(Path.GetDirectoryName(path));
     await System.IO.File.WriteAllTextAsync(path, line);
     Console.WriteLine($"line {_num}: ok");
